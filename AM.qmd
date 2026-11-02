@@ -7,7 +7,7 @@ author:
     orcid: https://orcid.org/0000-0002-9648-0576
   - name: Andres Felipe Suárez-Castro
     orcid: https://orcid.org/0000-0002-6621-3821
-date: 04/12/2024
+date: 02/11/2026
 citation: 
   url: https://dlizcano.github.io/spatialdata_lite/
   title: "Introducción al procesamiento, visualización y análisis de datos espaciales en R"
@@ -41,7 +41,7 @@ C://curso\
 
 ## Caso de estudio
 
-Durante el curso utilizaremos datos que vamos a descargar de la plataforma GBIF con el paquete rgbif. El ejercicio lo haremos con una especie de mamífero amenazado, la danta de montaña (*Tapirus pinchaque*).
+Durante el curso utilizaremos datos que vamos a descargar de la plataforma GBIF con el paquete `rgbif`. El ejercicio lo haremos con una especie de mamífero amenazado, la danta de montaña (*Tapirus pinchaque*).
 
 ![Danta de montaña](https://colombia.wcs.org/Portals/113/Noticias/En%20Terreno_temas%20varios/Diego%20Lizcano_danta_junio%202020/IMG_4332-2.jpg?ver=2020-06-26-160835-250)
 
@@ -50,7 +50,12 @@ library(tidyverse)
 library(rgbif)
 ```
 
-> Tenga en cuenta que se requiere conexión a internet y que podemos estar descargando muchos datos desde GBIF, así que este paso puede tardar unos segundos...
+
+::: {.callout-warning}
+Tenga en cuenta que se requiere conexión a Internet y que podemos estar descargando muchos datos desde GBIF, así que este paso puede tardar unos segundos o incluso minutos si el Internet no es rapido...
+:::
+
+
 
 ```{r, include=TRUE, eval=TRUE}
 #| code-fold: true
@@ -62,7 +67,7 @@ library(rgbif)
 # Si únicamente descargará los datos de una especie ----
 species1 <- c("Tapirus pinchaque")
 # Descargar datos de ocurrencia de GBIF para esta especie; Este proceso puede tomar tiempo si existen muchos puntos!
-gbif_data_sp1 <- occ_data(scientificName = species1, hasCoordinate = TRUE, limit = 20000)
+gbif_data_sp1 <- occ_data(scientificName = species1, hasCoordinate = TRUE, limit = 2000)#0
 # crear una tabla con los datos descargados:
 dat_sp1 <- gbif_data_sp1$data
 # Si "Records found" es más grande que "Records returned", debe incrementar el argumento 'limit' arriba -- consulte help(occ_data) para ver opciones y limitaciones
@@ -142,14 +147,19 @@ Nuestra tabla de registros tiene información específica sobre las localidades 
 
 ![Oso andino](https://www.animalspot.net/wp-content/uploads/2015/12/Baby-Spectacled-Bear.jpg)
 
-> Tenga en cuenta que se requiere conexión a internet y que podemos estar descargando muchos datos desde GBIF, así que este paso puede tardar unos segundos...
+
+::: {.callout-warning}
+Tenga en cuenta que se requiere conexión a internet y que podemos estar descargando muchos datos desde GBIF, así que este paso puede tardar unos segundos...
+:::
+
+
 
 ```{r eval=TRUE, echo=TRUE, include=TRUE}
 #| code-fold: true
 #| 
 species2 <- c("Tremarctos ornatus")
 # download GBIF occurrence data for this species; this takes time if there are many data points!
-gbif_data_sp2 <- occ_data(scientificName = species2, hasCoordinate = TRUE, limit = 20000)
+gbif_data_sp2 <- occ_data(scientificName = species2, hasCoordinate = TRUE, limit = 2000)#0
 # save to table
 dat_sp2 <- gbif_data_sp2$data
 ```
@@ -176,7 +186,7 @@ library(ggplot2)
 
 Primero, vamos a generar un histograma para revisar la distribución de los registos por año. Por ahora no nos preocuparemos demasiado por la estética de la gráfica.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| code-fold: true
 ggplot(dat_oso_danta) + 
   aes(x = year) + 
@@ -187,7 +197,7 @@ El componente `ggplot(dat_input)` determina la tabla de datos de la cual obtendr
 
 Inténtelo de nuevo, pero esta vez añada un color para cada especie.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| code-fold: true
 ggplot(dat_oso_danta) + 
   aes(x = year, fill = scientificName) +
@@ -222,6 +232,16 @@ ggplot(dat_oso_danta_filtrado) +
   aes(x = decimalLongitude, y = decimalLatitude, color = scientificName) +
   geom_point()
 ```
+
+### Guardemos el objeto `dat_oso_danta_filtrado`
+
+Esto nos ayudara a recuperarlo fácilmente cuando trabajemos en la tarde.
+
+```{r}
+saveRDS(dat_oso_danta_filtrado, "data/dat_oso_danta_filtrado")
+```
+
+
 
 ## Agrupación y resumen de datos
 
@@ -318,7 +338,7 @@ Añadir una línea en que muestre el año con más registros
 ```{r}
 #| code-fold: true
 p2<-p1 +
-  geom_vline(xintercept = 2016,colour="black", linetype = "longdash") 
+  geom_vline(xintercept = 2025,colour="black", linetype = "longdash") 
 p2
 ```
 
@@ -327,7 +347,7 @@ La función `anotate()` nos permite añadir texto en ubicaciones específicas de
 ```{r, results="show"}
 #| code-fold: true 
 p3<-p2 +
-  annotate("text", label = "2016", x = 2017, y = 1300, size = 4, colour = "black")
+  annotate("text", label = "2025", x = 2024, y = 1300, size = 4, colour = "black")
 p3
 ```
 
@@ -356,16 +376,26 @@ Tenga en cuenta que es una buena practica citar correctamente los datos que se d
 #| code-fold: true
 # get the DOIs for citing these data properly:
 
-gbif_citation(gbif_data_sp1) # para la danta
+unique(gbif_data_sp1$data$datasetKey) # muestra que los datos de la danta son 14 conjuntos de datos
+
+gbif_citation(unique(gbif_data_sp1$data$datasetKey)[1]) # Muestra la citacion del primer conjunto
+gbif_citation(unique(gbif_data_sp1$data$datasetKey)[2]) # Muestra la citacion del segundo conjunto
+
 
 gbif_citation(gbif_data_sp2) # para la el oso
 
-# nota: si necesita o prefiere solo un DOI para todo el conjunto de datos, descargue el conjunto de datos directamente desde www.gbif.org y luego importe el .csv a R. ¡Es muy importante citar correctamente las fuentes de datos! GBIF no es una fuente, sólo un depósito para muchas personas que trabajaron muy duro para recopilar estos datos y ponerlos a disposición.
+
 ```
+
+
+::: {.callout-note}
+Si necesita o prefiere solo un DOI para todo el conjunto de datos, descargue el conjunto de datos directamente desde www.gbif.org y luego importe el .csv a R. ¡Es muy importante citar correctamente las fuentes de datos! **GBIF** no es solo una fuente o un depósito de datos. Recuerde que para que podamos usar esos datos, muchas personas trabajaron muy duro para recopilarlos y ponerlos a nuestra disposición.
+:::
+
 
 ¡Hemos llegado al final de la mañana! Los conceptos aprendidos el día de hoy serán fundamentales para sacar el mayor provecho en la tarde. Es hora de Almorzar :)
 
 ```{=html}
 
-<iframe src="https://giphy.com/embed/boj7PRvJOpIT6" width="480" height="383" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/jW29f04c4z8x6MfF7O" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/Zhot-comida-almuerzo-hora-de-jW29f04c4z8x6MfF7O">via GIPHY</a></p>
 ```

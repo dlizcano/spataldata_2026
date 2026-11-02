@@ -7,7 +7,7 @@ author:
     orcid: https://orcid.org/0000-0002-9648-0576
   - name: Andrés Felipe Suárez-Castro
     orcid: https://orcid.org/0000-0002-6621-3821
-date: 04/12/2024
+date: 02/11/2026
 citation: 
   url: https://dlizcano.github.io/spatialdata_lite/
   title: "Introducción al procesamiento, visualización y análisis de datos espaciales en R"
@@ -23,8 +23,7 @@ html_document:
 ---
 
 # Tarde del Día 1
- 
- 
+
 ## Creación de un mapa básico en R
 
 Comenzamos cargando tres paquetes básicos necesarios para generar nuestros primeros mapas; `mapview`, `sf` y `ggplot2`.
@@ -38,9 +37,9 @@ library(ggplot2)
 library(sf)
 ```
 
-El paquete sf se utiliza para trabajar con datos espaciales y ofrece funciones para leer, escribir y analizar datos espaciales (features en inglés) de una manera sencilla y eficiente.
+El paquete `sf` se utiliza para trabajar con datos espaciales y ofrece funciones para leer, escribir y analizar datos espaciales (features en inglés) de una manera sencilla y eficiente.
 
-También utilizaremos el paquete maps para cargar un mapa global. Existen otros paquetes que también funcionan para este propósito, como el paquete *rnaturalearth*, el cual proporciona un mapa de países de todo el mundo.
+También utilizaremos el paquete `maps` para cargar un mapa global. Existen otros paquetes que también funcionan para este propósito, como el paquete *rnaturalearth*, el cual proporciona un mapa de países de todo el mundo.
 
 ```{r}
 #| code-fold: true
@@ -49,7 +48,7 @@ También utilizaremos el paquete maps para cargar un mapa global. Existen otros 
 library(maps)
 ```
 
-Ahora podemos cargar el mapa global usando la función *map()*. Además, transformaremos el objeto world a un *simple feature* o sf, este representa características simples como registros en un data.frame o tibble (tabla) con una lista-columna de geometrías (punto, linea, poligono, etc) que representan la forma, mas un sistema de coordendas.
+Ahora podemos cargar el mapa global usando la función *map()*. Además, transformaremos el objeto world a un *simple feature* o `sf`, este representa características simples como registros en un data.frame o tibble (tabla) con una lista-columna de geometrías (punto, linea, poligono, etc) que representan la forma, mas un sistema de coordendas.
 
 ```{r}
 #| code-fold: true
@@ -105,7 +104,7 @@ Para añadir los puntos en nuestro mapa, utilizaremos la función `geom_point()`
 #| eval: true
 #| warning: false
 #| 
-dat_oso_danta_filtrado <- readRDS("C:/CodigoR/intro_R_espacial_lite/data/dat_oso_danta_filtrado")
+dat_oso_danta_filtrado <- readRDS("data/dat_oso_danta_filtrado")
 ```
 
 ```{r}
@@ -301,14 +300,15 @@ Genere un histograma mostrando la distribución de la pendiente y la rugosidad p
 
 # Mapas interactivos
 
-El paquete mapview ofrece visualizaciones rápidas de objetos sf y raster de forma interactiva.
+El paquete `mapview` ofrece visualizaciones rápidas de objetos sf y raster de forma interactiva.
 
 ```{r}
 #| code-fold: true
 #| warning: false
 library(mapview)
 
-mapview(danta_oso_sf[c("scientificName")])
+mapview(danta_oso_sf[c("scientificName")], map.types =c( "OpenStreetMap","Esri.WorldImagery", "OpenTopoMap"))
+
 
 ```
 

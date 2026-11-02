@@ -5,23 +5,23 @@ website:
   title: "Introducción al procesamiento, visualización y análisis de datos espaciales en R"
   twitter-card: 
     creator: "@dlizcano"
-    site: "https://github.com/dlizcano/spatialdata_lite"
-  site-url: "https://dlizcano.github.io/spatialdata_lite"
-  repo-url: "https://github.com/dlizcano/spatialdata_lite"
+    site: "https://github.com/dlizcano/spataldata_2026"
+  site-url: "https://dlizcano.github.io/spataldata_2026"
+  repo-url: "https://github.com/dlizcano/spataldata_2026"
   navbar:
     search: true
     right:
       - href: index.qmd
         text: Home
       - href: AM.qmd
-        text: AM
+        text: Mañana
       - href: PM.qmd
-        text: PM
+        text: Tarde
       - href: about.qmd
       - icon: twitter
         href: https://twitter.com/dlizcano
       - icon: github
-        href: https://github.com/dlizcano/spatialdata_lite
+        href: https://github.com/dlizcano/spataldata_2026
         aria-label: GitHub
 
 format:
@@ -32,6 +32,6 @@ format:
     css: styles.css
     toc: true
 
-    
+freeze: auto    
 editor: visual
 
