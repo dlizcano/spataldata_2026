@@ -7,7 +7,7 @@ author:
     orcid: https://orcid.org/0000-0002-9648-0576
   - name: Andrés Felipe Suárez-Castro
     orcid: https://orcid.org/0000-0002-6621-3821
-date: 02/11/2026
+date: 11/02/2026
 citation: 
   url: https://dlizcano.github.io/spatialdata_lite/
   title: "Introducción al procesamiento, visualización y análisis de datos espaciales en R"

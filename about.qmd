@@ -2,7 +2,7 @@
 title: "About"
 description: |
   Instructores y creditos del curso: Introducción al procesamiento, visualización y análisis de datos espaciales en R.
-date: 04/12/2026
+date: 11/02/2026
 author: 
   - name: Diego J. Lizcano
     orcid: https://orcid.org/0000-0002-9648-0576

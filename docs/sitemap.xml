@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dlizcano.github.io/spataldata_2026/index.html</loc>
-    <lastmod>2026-11-01T21:39:14.375Z</lastmod>
+    <loc>https://dlizcano.github.io/spataldata_2026/PM.html</loc>
+    <lastmod>2026-11-02T01:08:51.212Z</lastmod>
   </url>
   <url>
     <loc>https://dlizcano.github.io/spataldata_2026/AM.html</loc>
-    <lastmod>2026-11-02T00:00:07.796Z</lastmod>
+    <lastmod>2026-11-02T01:08:11.068Z</lastmod>
   </url>
   <url>
-    <loc>https://dlizcano.github.io/spataldata_2026/PM.html</loc>
-    <lastmod>2026-11-02T00:26:20.123Z</lastmod>
+    <loc>https://dlizcano.github.io/spataldata_2026/about.html</loc>
+    <lastmod>2026-11-02T01:09:52.801Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dlizcano.github.io/spataldata_2026/index.html</loc>
+    <lastmod>2026-11-01T21:39:14.375Z</lastmod>
   </url>
 </urlset>

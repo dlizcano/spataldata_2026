@@ -1,0 +1,17 @@
+{
+  "hash": "9b9b64fd33004ae4b43a1fd523667bbb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"About\"\ndescription: |\n  Instructores y creditos del curso: Introducción al procesamiento, visualización y análisis de datos espaciales en R.\ndate: 11/02/2026\nauthor: \n  - name: Diego J. Lizcano\n    orcid: https://orcid.org/0000-0002-9648-0576\n    affiliation: SCMas\n    affiliation-url: https://mamiferoscolombia.org/\n  - name: Andres Felipe Suárez-Castro\n    orcid: https://orcid.org/0000-0002-6621-3821\n    affiliation: SCMas\n    affiliation-url: https://mamiferoscolombia.org/\ncitation: \n  url: https://dlizcano.github.io/spataldata_2026/\n  title: \"Introducción al procesamiento, visualización y análisis de datos espaciales en R\"\ngoogle-scholar: true\n---\n\n\n\n## Instructores\n\n[Diego J. Lizcano, Ph.D.](http://dlizcano.github.io/) Sociedad Colombiana de Mastozoología (SCMas)\n\n[Andres Felipe Suárez-Castro, Ph.D.](https://experts.griffith.edu.au/32770-andres-felipe-suarez-castro) Universidad Nacional de Colombia.\n\n## Créditos\n\nEste mini curso es una versión ligera del fantástico curso [Introducción al procesamiento, visualización y mapeo de datos espaciales en R](https://afsuarezca.github.io/Intro_R_espacial/index.html) preparado por el Dr. Andres Felipe Suárez-Castro.\n\nEste curso tiene una versión previa del 2004 en <https://dlizcano.github.io/spatialdata_lite/>\n\nAlgunos ejercicios presentados en este curso fueron adaptados del curso desarrollado por C.J. Brown, D. Schoeman, A.J. Richardson y B. Venables, el cual se encuentra [disponible en: https://www.seascapemodels.org/code.html](https://www.seascapemodels.org/code.html).\n",
+    "supporting": [
+      "about_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
